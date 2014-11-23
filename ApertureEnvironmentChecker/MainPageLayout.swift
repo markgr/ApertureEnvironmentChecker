@@ -19,7 +19,7 @@ class MainPageLayout: UICollectionViewLayout {
     // Static for the type of cell
     let mainLayoutCellKind = "MainLayoutCell";
     
-    var layoutDictionary:NSDictionary? = nil;
+    var layoutDictionary:NSMutableDictionary? = nil;
     
     override init()
     {
@@ -82,7 +82,7 @@ class MainPageLayout: UICollectionViewLayout {
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]?
     {
-        var allAttributes:NSMutableArray = NSMutableArray(capacity self.layoutDictionary?.count);
+        var allAttributes:NSMutableArray = NSMutableArray(capacity: layoutDictionary!.count);
         self.layoutDictionary?.enumerateKeysAndObjectsUsingBlock({ (key, obj, stop) -> Void in
             obj.enumerateKeysAndObjectsUsingBlock({ (keyinner, objinner, stopinner) -> Void in
                 let innerrect:CGRect? = objinner.CGRectValue()
@@ -96,16 +96,27 @@ class MainPageLayout: UICollectionViewLayout {
         return allAttributes;
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
-        return self.layoutDictionary[indexPath]
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes!
+    {
+        let att: NSMutableDictionary? = layoutDictionary!.objectForKey(mainLayoutCellKind) as? NSMutableDictionary;
+        if( att != nil )
+        {
+            return att![indexPath] as UICollectionViewLayoutAttributes;
+        }
+        return nil;
     }
     
     override func collectionViewContentSize() -> CGSize
     {
-        let rowCount = self.collectionView?.numberOfSections() / numberOfColumns;
-        if ( self.collectionView?.numberOfSections() % numberOfColumns)
+        let sectionCount = self.collectionView?.numberOfSections()
+        var rowCount:NSInteger = sectionCount! / numberOfColumns;
+        if ( (sectionCount! % numberOfColumns) != 0 )
         {
-            rowCount ++;
+            rowCount++;
         }
+        
+        let height = self.itemInserts.top + CGFloat(rowCount) * self.itemSize.height + (CGFloat(rowCount) - 1.0) * self.interItemSpacingY + self.itemInserts.bottom;
+        
+        return CGSize(width: self.collectionView!.bounds.width, height: height)
     }
 }

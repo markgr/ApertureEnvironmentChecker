@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -15,12 +16,12 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="506"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="khX-Z8-ya3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <collectionViewLayout key="collectionViewLayout" id="1pg-h6-eIR" customClass="MainPageLayout" customModule="ApertureEnvironmentChecker"/>
+                                <collectionViewLayout key="collectionViewLayout" id="1pg-h6-eIR" customClass="MainPageLayout" customModule="ApertureEnvironmentChecker" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uKo-xS-0rR">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -32,6 +33,10 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="D82-p9-NGy"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="dud-OK-VMy"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -55,11 +60,11 @@
                                 <exclude reference="khX-Z8-ya3"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="IEv-kB-JGL"/>
+                                <exclude reference="fd4-BV-FK0"/>
                                 <exclude reference="22b-rK-6FB"/>
                                 <exclude reference="H7I-ry-EK8"/>
                                 <exclude reference="yBR-Vx-hhW"/>
-                                <exclude reference="IEv-kB-JGL"/>
-                                <exclude reference="fd4-BV-FK0"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -67,11 +72,11 @@
                                 <include reference="khX-Z8-ya3"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="IEv-kB-JGL"/>
+                                <include reference="fd4-BV-FK0"/>
                                 <include reference="22b-rK-6FB"/>
                                 <include reference="H7I-ry-EK8"/>
                                 <include reference="yBR-Vx-hhW"/>
-                                <include reference="IEv-kB-JGL"/>
-                                <include reference="fd4-BV-FK0"/>
                             </mask>
                         </variation>
                     </view>

@@ -10,36 +10,31 @@
 	<string>ApertureEnvironmentChecker</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>1cf23a26-a0a9-40a3-b7af-c33d726e78d2++9275</key>
-		<string>http://eviology.unfuddle.com/svn/eviology_xcode/PercentileChartHashCreator</string>
+		<key>C222A7842F582450809A076561252C35B44F7DFF</key>
+		<string>https://github.com/markgr/ApertureEnvironmentChecker</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ApertureEnvironmentChecker/ApertureEnvironmentChecker.xcodeproj</string>
+	<string>ApertureEnvironmentChecker.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>1cf23a26-a0a9-40a3-b7af-c33d726e78d2++9275</key>
-		<string>../../..</string>
-	</dict>
-	<key>IDESourceControlProjectRepositoryRootDictionary</key>
-	<dict>
-		<key>1cf23a26-a0a9-40a3-b7af-c33d726e78d2++9275</key>
-		<string>http://eviology.unfuddle.com/svn/eviology_xcode</string>
+		<key>C222A7842F582450809A076561252C35B44F7DFF</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>http://eviology.unfuddle.com/svn/eviology_xcode/PercentileChartHashCreator/ApertureEnvironmentChecker/ApertureEnvironmentChecker.xcodeproj</string>
+	<string>https://github.com/markgr/ApertureEnvironmentChecker</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>1cf23a26-a0a9-40a3-b7af-c33d726e78d2++9275</string>
+	<string>C222A7842F582450809A076561252C35B44F7DFF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.subversion</string>
+			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>1cf23a26-a0a9-40a3-b7af-c33d726e78d2++9275</string>
+			<string>C222A7842F582450809A076561252C35B44F7DFF</string>
 			<key>IDESourceControlWCCName</key>
-			<string>IPhone_Development</string>
+			<string>ApertureEnvironmentChecker</string>
 		</dict>
 	</array>
 </dict>
