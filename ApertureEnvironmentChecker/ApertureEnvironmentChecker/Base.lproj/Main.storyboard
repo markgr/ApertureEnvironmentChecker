@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--CaaS View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="CaaSViewController" customModule="ApertureEnvironmentChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="khX-Z8-ya3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <collectionViewLayout key="collectionViewLayout" id="1pg-h6-eIR" customClass="MainPageLayout" customModule="ApertureEnvironmentChecker"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uKo-xS-0rR">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="khX-Z8-ya3" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="22b-rK-6FB">
+                                <variation key="heightClass=regular" constant="24"/>
+                            </constraint>
+                            <constraint firstItem="khX-Z8-ya3" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="H7I-ry-EK8"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="khX-Z8-ya3" secondAttribute="bottom" constant="8" id="IEv-kB-JGL">
+                                <variation key="heightClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="khX-Z8-ya3" secondAttribute="bottom" constant="8" id="fd4-BV-FK0">
+                                <variation key="heightClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="khX-Z8-ya3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="yBR-Vx-hhW">
+                                <variation key="heightClass=regular" constant="-16"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="khX-Z8-ya3"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="22b-rK-6FB"/>
+                                <exclude reference="H7I-ry-EK8"/>
+                                <exclude reference="yBR-Vx-hhW"/>
+                                <exclude reference="IEv-kB-JGL"/>
+                                <exclude reference="fd4-BV-FK0"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="khX-Z8-ya3"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="22b-rK-6FB"/>
+                                <include reference="H7I-ry-EK8"/>
+                                <include reference="yBR-Vx-hhW"/>
+                                <include reference="IEv-kB-JGL"/>
+                                <include reference="fd4-BV-FK0"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="_collectionView" destination="khX-Z8-ya3" id="NC0-0O-r6E"/>
+                        <outlet property="_mainPageLayout" destination="1pg-h6-eIR" id="9vX-7e-VsA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
