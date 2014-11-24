@@ -83,16 +83,32 @@ class MainPageLayout: UICollectionViewLayout {
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]?
     {
         var allAttributes:NSMutableArray = NSMutableArray(capacity: layoutDictionary!.count);
-        self.layoutDictionary?.enumerateKeysAndObjectsUsingBlock({ (key, obj, stop) -> Void in
-            obj.enumerateKeysAndObjectsUsingBlock({ (keyinner, objinner, stopinner) -> Void in
-                let innerrect:CGRect? = objinner.CGRectValue()
-                if( CGRectIntersectsRect(rect,innerrect!) )
-                {
-                    allAttributes.addObject(objinner)
-                }
-            })
-        })
         
+        // Enumerate through the outer mutable dictionary
+        self.layoutDictionary?.enumerateKeysAndObjectsUsingBlock({(key, obj, stop) -> Void in
+            println("key = \(key) obj = \(obj)");
+            
+            // Attempt to cast the obj as a mutable dictionary
+            if let innerObj:NSMutableDictionary? = obj as NSMutableDictionary?
+            {
+                // Now enumerate through that inner mdictionary
+                innerObj!.enumerateKeysAndObjectsUsingBlock({(keyinner, objinner, stopinner) -> Void in
+                    println("innerobj key = \(keyinner) obj = \(objinner)")
+                    
+                    // Cast the inner object as a type of UICollectionViewLayoutAttributes
+                    if let attributes:UICollectionViewLayoutAttributes? = objinner as UICollectionViewLayoutAttributes?
+                    {
+                        // Get the frame of this object
+                        let attRect = attributes!.frame;
+                        if( CGRectIntersectsRect(rect, attRect))
+                        {
+                            allAttributes.addObject(attributes!);
+                        }
+                    }
+                })
+            }
+        })
+    
         return allAttributes;
     }
     

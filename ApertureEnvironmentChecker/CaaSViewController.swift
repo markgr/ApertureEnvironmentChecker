@@ -20,9 +20,13 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        _collectionView.backgroundColor = UIColor.blueColor();
+        _collectionView.backgroundColor = UIColor.blackColor();
         
         _collectionView.registerClass(MainLayoutCollectionCellCollectionViewCell.self, forCellWithReuseIdentifier: mainCellIdentifier);
+        
+        let caas = CaaSCommunicator();
+        caas.GetAccountDetails();
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +48,5 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell:MainLayoutCollectionCellCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCellIdentifier, forIndexPath: indexPath) as MainLayoutCollectionCellCollectionViewCell;
         return cell;
     }
-    
 }
 

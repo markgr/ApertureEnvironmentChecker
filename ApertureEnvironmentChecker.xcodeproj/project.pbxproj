@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE668C491A229CD600A5454A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EE668C421A229CD600A5454A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EE668C4B1A229CD600A5454A /* SVHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EE668C451A229CD600A5454A /* SVHTTPClient.m */; };
+		EE668C4C1A229CD600A5454A /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EE668C471A229CD600A5454A /* SVHTTPRequest.m */; };
+		EE668C501A22B25500A5454A /* CaaSCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE668C4F1A22B25500A5454A /* CaaSCommunicator.swift */; };
+		EE668C521A22B2FA00A5454A /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE668C511A22B2FA00A5454A /* AccountModel.swift */; };
 		EED67B4F1A1EFFAF004CA3AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED67B4E1A1EFFAF004CA3AF /* AppDelegate.swift */; };
 		EED67B511A1EFFAF004CA3AF /* CaaSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED67B501A1EFFAF004CA3AF /* CaaSViewController.swift */; };
 		EED67B541A1EFFAF004CA3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EED67B521A1EFFAF004CA3AF /* Main.storyboard */; };
@@ -28,6 +33,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE668C411A229CD600A5454A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		EE668C421A229CD600A5454A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		EE668C441A229CD600A5454A /* SVHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVHTTPClient.h; sourceTree = "<group>"; };
+		EE668C451A229CD600A5454A /* SVHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVHTTPClient.m; sourceTree = "<group>"; };
+		EE668C461A229CD600A5454A /* SVHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVHTTPRequest.h; sourceTree = "<group>"; };
+		EE668C471A229CD600A5454A /* SVHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVHTTPRequest.m; sourceTree = "<group>"; };
+		EE668C4E1A229E1600A5454A /* ApertureEnvironmentChecker-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ApertureEnvironmentChecker-bridging-header.h"; sourceTree = "<group>"; };
+		EE668C4F1A22B25500A5454A /* CaaSCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaaSCommunicator.swift; sourceTree = "<group>"; };
+		EE668C511A22B2FA00A5454A /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		EED67B491A1EFFAF004CA3AF /* ApertureEnvironmentChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApertureEnvironmentChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED67B4D1A1EFFAF004CA3AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EED67B4E1A1EFFAF004CA3AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +74,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE668C3A1A2292DF00A5454A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EE668C511A22B2FA00A5454A /* AccountModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		EE668C3B1A2292E700A5454A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EED67B521A1EFFAF004CA3AF /* Main.storyboard */,
+				EED67B551A1EFFAF004CA3AF /* Images.xcassets */,
+				EED67B571A1EFFAF004CA3AF /* LaunchScreen.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		EE668C3C1A2292F900A5454A /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				EED67B4E1A1EFFAF004CA3AF /* AppDelegate.swift */,
+				EE668C4F1A22B25500A5454A /* CaaSCommunicator.swift */,
+			);
+			name = Code;
+			sourceTree = "<group>";
+		};
+		EE668C3D1A229CC700A5454A /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				EE668C3E1A229CD600A5454A /* SVHTTPRequest */,
+			);
+			name = Lib;
+			sourceTree = "<group>";
+		};
+		EE668C3E1A229CD600A5454A /* SVHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				EE668C3F1A229CD600A5454A /* JSONKit */,
+				EE668C441A229CD600A5454A /* SVHTTPClient.h */,
+				EE668C451A229CD600A5454A /* SVHTTPClient.m */,
+				EE668C461A229CD600A5454A /* SVHTTPRequest.h */,
+				EE668C471A229CD600A5454A /* SVHTTPRequest.m */,
+			);
+			name = SVHTTPRequest;
+			path = Lib/SVHTTPRequest;
+			sourceTree = "<group>";
+		};
+		EE668C3F1A229CD600A5454A /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				EE668C411A229CD600A5454A /* JSONKit.h */,
+				EE668C421A229CD600A5454A /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 		EED67B401A1EFFAF004CA3AF = {
 			isa = PBXGroup;
 			children = (
@@ -81,12 +152,12 @@
 		EED67B4B1A1EFFAF004CA3AF /* ApertureEnvironmentChecker */ = {
 			isa = PBXGroup;
 			children = (
+				EE668C3D1A229CC700A5454A /* Lib */,
+				EE668C3C1A2292F900A5454A /* Code */,
+				EE668C3B1A2292E700A5454A /* Resources */,
+				EE668C3A1A2292DF00A5454A /* Models */,
 				EED67B711A1F3E42004CA3AF /* ViewControllers */,
 				EED67B701A1F3E39004CA3AF /* Views */,
-				EED67B4E1A1EFFAF004CA3AF /* AppDelegate.swift */,
-				EED67B521A1EFFAF004CA3AF /* Main.storyboard */,
-				EED67B551A1EFFAF004CA3AF /* Images.xcassets */,
-				EED67B571A1EFFAF004CA3AF /* LaunchScreen.xib */,
 				EED67B4C1A1EFFAF004CA3AF /* Supporting Files */,
 			);
 			path = ApertureEnvironmentChecker;
@@ -95,6 +166,7 @@
 		EED67B4C1A1EFFAF004CA3AF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EE668C4E1A229E1600A5454A /* ApertureEnvironmentChecker-bridging-header.h */,
 				EED67B4D1A1EFFAF004CA3AF /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -235,6 +307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EED67B6F1A1F040F004CA3AF /* MainPageLayout.swift in Sources */,
+				EE668C521A22B2FA00A5454A /* AccountModel.swift in Sources */,
+				EE668C4B1A229CD600A5454A /* SVHTTPClient.m in Sources */,
+				EE668C501A22B25500A5454A /* CaaSCommunicator.swift in Sources */,
+				EE668C491A229CD600A5454A /* JSONKit.m in Sources */,
+				EE668C4C1A229CD600A5454A /* SVHTTPRequest.m in Sources */,
 				EED67B731A1F3E73004CA3AF /* MainLayoutCollectionCellCollectionViewCell.swift in Sources */,
 				EED67B511A1EFFAF004CA3AF /* CaaSViewController.swift in Sources */,
 				EED67B4F1A1EFFAF004CA3AF /* AppDelegate.swift in Sources */,
@@ -363,6 +440,7 @@
 				INFOPLIST_FILE = ApertureEnvironmentChecker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ApertureEnvironmentChecker/ApertureEnvironmentChecker-bridging-header.h";
 			};
 			name = Debug;
 		};
@@ -373,6 +451,7 @@
 				INFOPLIST_FILE = ApertureEnvironmentChecker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ApertureEnvironmentChecker/ApertureEnvironmentChecker-bridging-header.h";
 			};
 			name = Release;
 		};
@@ -429,6 +508,7 @@
 				EED67B6A1A1EFFB0004CA3AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EED67B6B1A1EFFB0004CA3AF /* Build configuration list for PBXNativeTarget "ApertureEnvironmentCheckerTests" */ = {
 			isa = XCConfigurationList;
@@ -437,6 +517,7 @@
 				EED67B6D1A1EFFB0004CA3AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
