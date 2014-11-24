@@ -10,6 +10,23 @@ import UIKit
 
 class BaseModel: NSObject
 {
-    var dictionaryOfObjects:NSMutableDictionary? = nil;
+    var arrayOfItems:NSMutableArray? = nil;
     var isSingleEntry = true;
+    var outerNode:String = "";
+    var encapsulatedClass: AnyClass? = nil;
+    
+    func AddNewModel() -> Void
+    {
+        
+    }
+    
+    func GetCurrentModel() -> AnyObject?
+    {
+        if( arrayOfItems != nil )
+        {
+            return arrayOfItems![arrayOfItems!.count-1];
+        }
+        
+        return nil;
+    }
 }

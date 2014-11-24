@@ -45,7 +45,7 @@ class CaaSCommunicator : NSObject, NSXMLParserDelegate
         sharedClient.basePath = "https://api-au.dimensiondata.com/oec/0.9/";
         sharedClient.setBasicAuthWithUsername("mark.greenwood", password: "Letme!n1")
         
-        var accModel = CaasNetwork()
+        var accModel = CaaSNetworksModel()
         currentClass = object_getClass(accModel);
         anyObject = accModel;
         
@@ -91,9 +91,27 @@ class CaaSCommunicator : NSObject, NSXMLParserDelegate
         var elementrealName = stripColonsFromElement(elementName);
         
         currentXmlElement = elementrealName;
+        
+        // Check if the class is a multi level entry - then we need to check the element itself
+        if( anyObject is BaseModel )
+        {
+            // And its a multi level one
+            if let baseModelClass:BaseModel? = anyObject as? BaseModel
+            {
+                if( baseModelClass!.isSingleEntry == false )
+                {
+                    // Now check the outer node
+                    if( baseModelClass!.outerNode == currentXmlElement )
+                    {
+                        // Create a new entry in the base model class now
+                        baseModelClass!.AddNewModel();
+                    }
+                }
+            }
+        }
     }
     
-    func parser(parser: NSXMLParser!, foundCharacters string: String!)
+    func singleModelParser(parser: NSXMLParser!, foundCharacters string: String!)
     {
         var count:UInt32 = 0;
         var actualproperties:UnsafeMutablePointer<objc_property_t> = class_copyPropertyList(currentClass, &count);
@@ -104,7 +122,7 @@ class CaaSCommunicator : NSObject, NSXMLParserDelegate
         {
             var property = actualproperties[i];
             var propertyName = NSString(CString: property_getName(property), encoding: NSUTF8StringEncoding);
-        
+            
             if( propertyName! == currentXmlElement )
             {
                 // Set this property!
@@ -120,6 +138,55 @@ class CaaSCommunicator : NSObject, NSXMLParserDelegate
         }
     }
     
+    func multiModelParser(parser: NSXMLParser!, foundCharacters string: String!)
+    {
+        if let baseModelClass:BaseModel? = anyObject as? BaseModel
+        {
+            var count:UInt32 = 0;
+            var actualproperties:UnsafeMutablePointer<objc_property_t> = class_copyPropertyList(baseModelClass!.encapsulatedClass, &count);
+            println("count of properties = \(count)");
+            
+            // Check each property and see if this matches
+            for var i = 0; i < Int(count); i++
+            {
+                var property = actualproperties[i];
+                var propertyName = NSString(CString: property_getName(property), encoding: NSUTF8StringEncoding);
+                
+                if( propertyName! == currentXmlElement )
+                {
+                    // Set this property!
+                    if var currentString: String? = baseModelClass!.GetCurrentModel()!.valueForKey(propertyName!) as? String
+                    {
+                        var newString = currentString! + string;
+                        newString = newString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet());
+                        baseModelClass!.GetCurrentModel()!.setValue(newString, forKey: propertyName!);
+                        
+                        println("setting \(propertyName) with \(newString)")
+                    }
+                }
+            }
+        }
+    }
+    
+    func parser(parser: NSXMLParser!, foundCharacters string: String!)
+    {
+        if( anyObject is BaseModel )
+        {
+            // And its a multi level one
+            if let baseModelClass:BaseModel? = anyObject as? BaseModel
+            {
+                if( baseModelClass!.isSingleEntry == true )
+                {
+                    self.singleModelParser(parser, foundCharacters: string);
+                }
+                else
+                {   self.multiModelParser(parser, foundCharacters: string)
+                    
+                }
+            }
+        }
+    }
+    
     func parserDidEndDocument(parser: NSXMLParser!)
     {
         // Make sure we have a delegate
@@ -129,7 +196,7 @@ class CaaSCommunicator : NSObject, NSXMLParserDelegate
             {
                 delegate!.FinishedParsingAccount(self.anyObject?);
             }
-            else if ( anyObject is CaasNetwork )
+            else if ( anyObject is CaaSNetworksModel )
             {
                 delegate!.FinishedParsingAllNetworks(self.anyObject?);
             }

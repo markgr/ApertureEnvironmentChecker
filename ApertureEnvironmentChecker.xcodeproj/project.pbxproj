@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE03BC821A232312002F6C91 /* CaaSNetworksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE03BC811A232312002F6C91 /* CaaSNetworksModel.swift */; };
 		EE668C491A229CD600A5454A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = EE668C421A229CD600A5454A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EE668C4B1A229CD600A5454A /* SVHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EE668C451A229CD600A5454A /* SVHTTPClient.m */; };
 		EE668C4C1A229CD600A5454A /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EE668C471A229CD600A5454A /* SVHTTPRequest.m */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE03BC811A232312002F6C91 /* CaaSNetworksModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaaSNetworksModel.swift; sourceTree = "<group>"; };
 		EE668C411A229CD600A5454A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		EE668C421A229CD600A5454A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		EE668C441A229CD600A5454A /* SVHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVHTTPClient.h; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				EE668C511A22B2FA00A5454A /* AccountModel.swift */,
 				EECCA0501A22F5C90030B8C4 /* CaasNetwork.swift */,
 				EECCA0521A22FD140030B8C4 /* BaseModel.swift */,
+				EE03BC811A232312002F6C91 /* CaaSNetworksModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				EECCA0491A22E3890030B8C4 /* StartupController.swift in Sources */,
 				EE668C521A22B2FA00A5454A /* AccountModel.swift in Sources */,
 				EECCA0531A22FD140030B8C4 /* BaseModel.swift in Sources */,
+				EE03BC821A232312002F6C91 /* CaaSNetworksModel.swift in Sources */,
 				EE668C4B1A229CD600A5454A /* SVHTTPClient.m in Sources */,
 				EE668C501A22B25500A5454A /* CaaSCommunicator.swift in Sources */,
 				EE668C491A229CD600A5454A /* JSONKit.m in Sources */,

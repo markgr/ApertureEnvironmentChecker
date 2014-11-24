@@ -10,15 +10,28 @@ import Foundation
 
 class AccountModel : BaseModel
 {
+    var innerDictionary : NSMutableDictionary?
+    {
+        get
+        {
+            if( arrayOfItems != nil )
+            {
+                return arrayOfItems![0] as? NSMutableDictionary;
+            }
+            
+            return nil;
+        }
+    }
+    
     var userName : String
     {
         get
         {
-            return dictionaryOfObjects!.objectForKey("userName") as String
+            return innerDictionary!.objectForKey("userName") as String
         }
         set
         {
-            dictionaryOfObjects!.setValue(newValue, forKey: "userName");
+            innerDictionary!.setValue(newValue, forKey: "userName");
         }
     }
     
@@ -26,11 +39,11 @@ class AccountModel : BaseModel
     {
         get
         {
-            return dictionaryOfObjects!.objectForKey("fullName") as String
+            return innerDictionary!.objectForKey("fullName") as String
         }
         set
         {
-            dictionaryOfObjects!.setValue(newValue, forKey: "fullName");
+            innerDictionary!.setValue(newValue, forKey: "fullName");
         }
     }
     
@@ -38,11 +51,11 @@ class AccountModel : BaseModel
     {
         get
         {
-            return dictionaryOfObjects!.objectForKey("firstName") as String
+            return innerDictionary!.objectForKey("firstName") as String
         }
         set
         {
-            dictionaryOfObjects!.setValue(newValue, forKey: "firstName");
+            innerDictionary!.setValue(newValue, forKey: "firstName");
         }
     }
     
@@ -50,11 +63,11 @@ class AccountModel : BaseModel
     {
         get
         {
-            return dictionaryOfObjects!.objectForKey("lastName") as String
+            return innerDictionary!.objectForKey("lastName") as String
         }
         set
         {
-            dictionaryOfObjects!.setValue(newValue, forKey: "lastName");
+            innerDictionary!.setValue(newValue, forKey: "lastName");
         }
     }
     
@@ -62,11 +75,11 @@ class AccountModel : BaseModel
     {
         get
         {
-            return dictionaryOfObjects!.objectForKey("emailAddress") as String
+            return innerDictionary!.objectForKey("emailAddress") as String
         }
         set
         {
-            dictionaryOfObjects!.setValue(newValue, forKey: "emailAddress");
+            innerDictionary!.setValue(newValue, forKey: "emailAddress");
         }
     }
     
@@ -74,24 +87,26 @@ class AccountModel : BaseModel
     {
         get
         {
-            return dictionaryOfObjects!.objectForKey("orgId") as String
+            return innerDictionary!.objectForKey("orgId") as String
         }
         set
         {
-            dictionaryOfObjects!.setValue(newValue, forKey: "orgId");
+            innerDictionary!.setValue(newValue, forKey: "orgId");
         }
     }
     
     override init()
     {
         super.init();
-        dictionaryOfObjects = NSMutableDictionary(objectsAndKeys:
+        let dictionaryOfObjects:NSMutableDictionary = NSMutableDictionary(objectsAndKeys:
                                     "", "userName",
                                     "", "fullName",
                                     "", "firstName",
                                     "", "lastName",
                                     "", "emailAddress",
-            "", "orgId");
+                                    "", "orgId");
+        arrayOfItems = NSMutableArray(object: dictionaryOfObjects);
+        
         isSingleEntry = true;
     }
 }

@@ -16,16 +16,19 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBOutlet var _mainPageLayout: MainPageLayout!
     
+    var myNetworks:CaaSNetworksModel? = nil;
+    
     override func viewWillAppear(animated: Bool)
     {
         SVProgressHUD.showWithStatus("Loading");
+        let caas = CaaSCommunicator();
+        caas.GetAccountDetails();
+        caas.delegate = self;
     }
     
     override func viewDidAppear(animated: Bool)
     {
-        let caas = CaaSCommunicator();
-        caas.GetAccountDetails();
-        caas.delegate = self;
+        
     }
     
     override func viewDidLoad() {
@@ -43,12 +46,19 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 10;
+        return 1;
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return 5;
+        if( myNetworks != nil )
+        {
+            return myNetworks!.arrayOfItems!.count;
+        }
+        else
+        {
+            return 0;
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
@@ -65,6 +75,8 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
             println("The parsing has finished \(myAccount!)");
             println("The parsing has finished \(myAccount!.fullName)");
             
+            SVProgressHUD.showWithStatus("Loading Networks");
+            
             let caas = CaaSCommunicator();
             caas.delegate = self;
             caas.GetAllNetworks(organization: myAccount!.orgId)
@@ -73,11 +85,14 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func FinishedParsingAllNetworks(completedObject: AnyObject?)
     {
-        if let myAccount:CaasNetwork? = completedObject as? CaasNetwork
+        if let myNetworks = completedObject as? CaaSNetworksModel
         {
-            println("The parsing has finished \(myAccount!)");
-            println("The parsing has finished \(myAccount!.ipaddress)");
+            println("The parsing has finished \(myNetworks.arrayOfItems!.count)");
         }
+        
+        SVProgressHUD.dismiss()
+        
+        _collectionView.reloadData();
     }
 }
 

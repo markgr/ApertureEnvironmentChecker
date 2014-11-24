@@ -8,11 +8,11 @@
 
 import Foundation
 
-class CaasNetwork : NSObject
+class CaasNetworkModel : NSObject
 {
     var id = "";
     var name = "";
     var networkdescription = "";
     var location = "";
-    var ipaddress = "";
+    var ipaddress = "";    
 }
