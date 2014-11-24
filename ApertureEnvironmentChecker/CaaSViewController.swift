@@ -10,11 +10,23 @@ import UIKit
 
 let mainCellIdentifier = "MainCell"
 
-class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate
+class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, CaasCommunicatorProtocol
 {
     @IBOutlet var _collectionView: UICollectionView!
     
     @IBOutlet var _mainPageLayout: MainPageLayout!
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        SVProgressHUD.showWithStatus("Loading");
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        let caas = CaaSCommunicator();
+        caas.GetAccountDetails();
+        caas.delegate = self;
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +35,6 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
         _collectionView.backgroundColor = UIColor.blackColor();
         
         _collectionView.registerClass(MainLayoutCollectionCellCollectionViewCell.self, forCellWithReuseIdentifier: mainCellIdentifier);
-        
-        let caas = CaaSCommunicator();
-        caas.GetAccountDetails();
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +55,29 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
     {
         let cell:MainLayoutCollectionCellCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCellIdentifier, forIndexPath: indexPath) as MainLayoutCollectionCellCollectionViewCell;
         return cell;
+    }
+    
+//MARK: CaasCommunicatorProtocol functions
+    func FinishedParsingAccount(completedObject: AnyObject?)
+    {
+        if let myAccount:AccountModel? = completedObject as? AccountModel
+        {
+            println("The parsing has finished \(myAccount!)");
+            println("The parsing has finished \(myAccount!.fullName)");
+            
+            let caas = CaaSCommunicator();
+            caas.delegate = self;
+            caas.GetAllNetworks(organization: myAccount!.orgId)
+        }
+    }
+    
+    func FinishedParsingAllNetworks(completedObject: AnyObject?)
+    {
+        if let myAccount:CaasNetwork? = completedObject as? CaasNetwork
+        {
+            println("The parsing has finished \(myAccount!)");
+            println("The parsing has finished \(myAccount!.ipaddress)");
+        }
     }
 }
 

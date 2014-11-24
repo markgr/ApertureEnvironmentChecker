@@ -13,5 +13,6 @@
 #import "SVHttpClient.h"
 #import "JSONKit.h"
 #import "SVHTTPRequest.h"
+#import "SVProgressHUD.h"
 
 #endif

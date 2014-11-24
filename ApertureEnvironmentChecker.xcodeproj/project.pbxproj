@@ -12,6 +12,11 @@
 		EE668C4C1A229CD600A5454A /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EE668C471A229CD600A5454A /* SVHTTPRequest.m */; };
 		EE668C501A22B25500A5454A /* CaaSCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE668C4F1A22B25500A5454A /* CaaSCommunicator.swift */; };
 		EE668C521A22B2FA00A5454A /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE668C511A22B2FA00A5454A /* AccountModel.swift */; };
+		EECCA0491A22E3890030B8C4 /* StartupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA0481A22E3890030B8C4 /* StartupController.swift */; };
+		EECCA04E1A22E4380030B8C4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EECCA04B1A22E4380030B8C4 /* SVProgressHUD.bundle */; };
+		EECCA04F1A22E4380030B8C4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCA04D1A22E4380030B8C4 /* SVProgressHUD.m */; };
+		EECCA0511A22F5C90030B8C4 /* CaasNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA0501A22F5C90030B8C4 /* CaasNetwork.swift */; };
+		EECCA0531A22FD140030B8C4 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA0521A22FD140030B8C4 /* BaseModel.swift */; };
 		EED67B4F1A1EFFAF004CA3AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED67B4E1A1EFFAF004CA3AF /* AppDelegate.swift */; };
 		EED67B511A1EFFAF004CA3AF /* CaaSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED67B501A1EFFAF004CA3AF /* CaaSViewController.swift */; };
 		EED67B541A1EFFAF004CA3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EED67B521A1EFFAF004CA3AF /* Main.storyboard */; };
@@ -42,6 +47,12 @@
 		EE668C4E1A229E1600A5454A /* ApertureEnvironmentChecker-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ApertureEnvironmentChecker-bridging-header.h"; sourceTree = "<group>"; };
 		EE668C4F1A22B25500A5454A /* CaaSCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaaSCommunicator.swift; sourceTree = "<group>"; };
 		EE668C511A22B2FA00A5454A /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		EECCA0481A22E3890030B8C4 /* StartupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupController.swift; sourceTree = "<group>"; };
+		EECCA04B1A22E4380030B8C4 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		EECCA04C1A22E4380030B8C4 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		EECCA04D1A22E4380030B8C4 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		EECCA0501A22F5C90030B8C4 /* CaasNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaasNetwork.swift; sourceTree = "<group>"; };
+		EECCA0521A22FD140030B8C4 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		EED67B491A1EFFAF004CA3AF /* ApertureEnvironmentChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApertureEnvironmentChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED67B4D1A1EFFAF004CA3AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EED67B4E1A1EFFAF004CA3AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				EE668C511A22B2FA00A5454A /* AccountModel.swift */,
+				EECCA0501A22F5C90030B8C4 /* CaasNetwork.swift */,
+				EECCA0521A22FD140030B8C4 /* BaseModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -104,6 +117,7 @@
 		EE668C3D1A229CC700A5454A /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				EECCA04A1A22E4380030B8C4 /* SVProgressHUD */,
 				EE668C3E1A229CD600A5454A /* SVHTTPRequest */,
 			);
 			name = Lib;
@@ -129,6 +143,17 @@
 				EE668C421A229CD600A5454A /* JSONKit.m */,
 			);
 			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		EECCA04A1A22E4380030B8C4 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				EECCA04B1A22E4380030B8C4 /* SVProgressHUD.bundle */,
+				EECCA04C1A22E4380030B8C4 /* SVProgressHUD.h */,
+				EECCA04D1A22E4380030B8C4 /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = Lib/SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		EED67B401A1EFFAF004CA3AF = {
@@ -202,6 +227,7 @@
 			children = (
 				EED67B6E1A1F040F004CA3AF /* MainPageLayout.swift */,
 				EED67B501A1EFFAF004CA3AF /* CaaSViewController.swift */,
+				EECCA0481A22E3890030B8C4 /* StartupController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -289,6 +315,7 @@
 				EED67B541A1EFFAF004CA3AF /* Main.storyboard in Resources */,
 				EED67B591A1EFFAF004CA3AF /* LaunchScreen.xib in Resources */,
 				EED67B561A1EFFAF004CA3AF /* Images.xcassets in Resources */,
+				EECCA04E1A22E4380030B8C4 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,13 +334,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EED67B6F1A1F040F004CA3AF /* MainPageLayout.swift in Sources */,
+				EECCA0491A22E3890030B8C4 /* StartupController.swift in Sources */,
 				EE668C521A22B2FA00A5454A /* AccountModel.swift in Sources */,
+				EECCA0531A22FD140030B8C4 /* BaseModel.swift in Sources */,
 				EE668C4B1A229CD600A5454A /* SVHTTPClient.m in Sources */,
 				EE668C501A22B25500A5454A /* CaaSCommunicator.swift in Sources */,
 				EE668C491A229CD600A5454A /* JSONKit.m in Sources */,
 				EE668C4C1A229CD600A5454A /* SVHTTPRequest.m in Sources */,
 				EED67B731A1F3E73004CA3AF /* MainLayoutCollectionCellCollectionViewCell.swift in Sources */,
 				EED67B511A1EFFAF004CA3AF /* CaaSViewController.swift in Sources */,
+				EECCA04F1A22E4380030B8C4 /* SVProgressHUD.m in Sources */,
+				EECCA0511A22F5C90030B8C4 /* CaasNetwork.swift in Sources */,
 				EED67B4F1A1EFFAF004CA3AF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

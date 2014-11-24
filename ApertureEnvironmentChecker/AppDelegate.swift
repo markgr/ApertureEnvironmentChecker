@@ -14,8 +14,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+        // First thing to do is to create a new navigation controller!
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil);
+        
+        // Create a primary view controller for the main view controller within the storyboard
+        if let startupView = storyBoard.instantiateViewControllerWithIdentifier("StartupController") as? StartupController
+        {
+            // Next create a navigation controller
+            let myNav = UINavigationController(rootViewController: startupView);
+            
+            // Now we can set this as the primary view controller
+            window?.rootViewController = myNav;
+            window?.makeKeyAndVisible();
+        }
+        
+
         return true
     }
 
