@@ -22,11 +22,65 @@ class AccountModel : BaseModel
         }
     }
     
-    var fullName = "";
-    var firstName = "";
-    var lastName = "";
-    var emailAddress = "";
-    var orgId = "";
+    var fullName : String
+    {
+        get
+        {
+            return dictionaryOfObjects!.objectForKey("fullName") as String
+        }
+        set
+        {
+            dictionaryOfObjects!.setValue(newValue, forKey: "fullName");
+        }
+    }
+    
+    var firstName : String
+    {
+        get
+        {
+            return dictionaryOfObjects!.objectForKey("firstName") as String
+        }
+        set
+        {
+            dictionaryOfObjects!.setValue(newValue, forKey: "firstName");
+        }
+    }
+    
+    var lastName : String
+    {
+        get
+        {
+            return dictionaryOfObjects!.objectForKey("lastName") as String
+        }
+        set
+        {
+            dictionaryOfObjects!.setValue(newValue, forKey: "lastName");
+        }
+    }
+    
+    var emailAddress : String
+    {
+        get
+        {
+            return dictionaryOfObjects!.objectForKey("emailAddress") as String
+        }
+        set
+        {
+            dictionaryOfObjects!.setValue(newValue, forKey: "emailAddress");
+        }
+    }
+    
+    var orgId : String
+    {
+        get
+        {
+            return dictionaryOfObjects!.objectForKey("orgId") as String
+        }
+        set
+        {
+            dictionaryOfObjects!.setValue(newValue, forKey: "orgId");
+        }
+    }
     
     override init()
     {
