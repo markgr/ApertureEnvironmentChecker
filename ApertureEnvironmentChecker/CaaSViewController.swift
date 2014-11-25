@@ -29,19 +29,7 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     }
     
-    func addGradientBackground()
-    {
-        var arrayOfColors = [];
-        let colorTop = UIColor.blackColor();
-        let colorBottom = UIColor.whiteColor();
-        arrayOfColors = [colorTop, colorBottom];
-        
-        let gradientLayer = CAGradientLayer();
-        gradientLayer.frame = self.view.frame;
-        gradientLayer.colors = arrayOfColors;
-        gradientLayer.locations = [0.0,1.0];
-        self.view.layer.insertSublayer(gradientLayer, below: _collectionView.layer);
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +43,8 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         _collectionView.backgroundColor = UIColor.clearColor();
         
-        addGradientBackground();
+        // Add a gradient to the view
+        Utils.addGradientBackground(self.view, layerView: _collectionView);
         
         SVProgressHUD.showWithStatus("Loading");
         let caas = CaaSCommunicator();

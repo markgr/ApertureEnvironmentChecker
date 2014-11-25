@@ -13,6 +13,9 @@
 		EE668C4C1A229CD600A5454A /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EE668C471A229CD600A5454A /* SVHTTPRequest.m */; };
 		EE668C501A22B25500A5454A /* CaaSCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE668C4F1A22B25500A5454A /* CaaSCommunicator.swift */; };
 		EE668C521A22B2FA00A5454A /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE668C511A22B2FA00A5454A /* AccountModel.swift */; };
+		EE83E9F31A24253F0076934C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE83E9F21A24253F0076934C /* Utils.swift */; };
+		EE83E9F71A2432DB0076934C /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = EE83E9F51A2432DB0076934C /* cross.png */; };
+		EE83E9F81A2432DB0076934C /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = EE83E9F61A2432DB0076934C /* tick.png */; };
 		EECCA0491A22E3890030B8C4 /* StartupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA0481A22E3890030B8C4 /* StartupController.swift */; };
 		EECCA04E1A22E4380030B8C4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EECCA04B1A22E4380030B8C4 /* SVProgressHUD.bundle */; };
 		EECCA04F1A22E4380030B8C4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCA04D1A22E4380030B8C4 /* SVProgressHUD.m */; };
@@ -54,6 +57,9 @@
 		EE668C4E1A229E1600A5454A /* ApertureEnvironmentChecker-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ApertureEnvironmentChecker-bridging-header.h"; sourceTree = "<group>"; };
 		EE668C4F1A22B25500A5454A /* CaaSCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaaSCommunicator.swift; sourceTree = "<group>"; };
 		EE668C511A22B2FA00A5454A /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		EE83E9F21A24253F0076934C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		EE83E9F51A2432DB0076934C /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cross.png; path = Images/cross.png; sourceTree = "<group>"; };
+		EE83E9F61A2432DB0076934C /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tick.png; path = Images/tick.png; sourceTree = "<group>"; };
 		EECCA0481A22E3890030B8C4 /* StartupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupController.swift; sourceTree = "<group>"; };
 		EECCA04B1A22E4380030B8C4 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		EECCA04C1A22E4380030B8C4 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 		EE668C3B1A2292E700A5454A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EE83E9F41A2432A50076934C /* Images */,
 				EED67B521A1EFFAF004CA3AF /* Main.storyboard */,
 				EED67B551A1EFFAF004CA3AF /* Images.xcassets */,
 				EED67B571A1EFFAF004CA3AF /* LaunchScreen.xib */,
@@ -127,6 +134,7 @@
 			children = (
 				EED67B4E1A1EFFAF004CA3AF /* AppDelegate.swift */,
 				EE668C4F1A22B25500A5454A /* CaaSCommunicator.swift */,
+				EE83E9F21A24253F0076934C /* Utils.swift */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -160,6 +168,15 @@
 				EE668C421A229CD600A5454A /* JSONKit.m */,
 			);
 			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		EE83E9F41A2432A50076934C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EE83E9F51A2432DB0076934C /* cross.png */,
+				EE83E9F61A2432DB0076934C /* tick.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		EECCA04A1A22E4380030B8C4 /* SVProgressHUD */ = {
@@ -331,9 +348,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE83E9F71A2432DB0076934C /* cross.png in Resources */,
 				EECCA05D1A23FCFD0030B8C4 /* ServerTableViewCell.xib in Resources */,
 				EED67B541A1EFFAF004CA3AF /* Main.storyboard in Resources */,
 				EED67B591A1EFFAF004CA3AF /* LaunchScreen.xib in Resources */,
+				EE83E9F81A2432DB0076934C /* tick.png in Resources */,
 				EED67B561A1EFFAF004CA3AF /* Images.xcassets in Resources */,
 				EECCA04E1A22E4380030B8C4 /* SVProgressHUD.bundle in Resources */,
 			);
@@ -364,6 +383,7 @@
 				EE668C501A22B25500A5454A /* CaaSCommunicator.swift in Sources */,
 				EE668C491A229CD600A5454A /* JSONKit.m in Sources */,
 				EE668C4C1A229CD600A5454A /* SVHTTPRequest.m in Sources */,
+				EE83E9F31A24253F0076934C /* Utils.swift in Sources */,
 				EED67B731A1F3E73004CA3AF /* MainLayoutCollectionCellCollectionViewCell.swift in Sources */,
 				EED67B511A1EFFAF004CA3AF /* CaaSViewController.swift in Sources */,
 				EECCA0571A23E8500030B8C4 /* CaaSServerModel.swift in Sources */,

@@ -32,6 +32,13 @@ class CaaSServerController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad()
     {
         self.title = "CaaS Servers";
+        
+        _tableView.backgroundColor = UIColor.clearColor();
+        
+        // Add a gradient to the view
+        Utils.addGradientBackground(self.view, layerView: _tableView);
+        
+        _tableView.estimatedRowHeight = 60.0;
     }
     
     override func viewWillAppear(animated: Bool)
@@ -66,22 +73,41 @@ class CaaSServerController: UIViewController, UITableViewDataSource, UITableView
     //MARK: Table View stuff
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 60.0;
+        return 100.0;
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 5.0;
+        return 4.0;
     }
 
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.001;
+        return 1.0;
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+    {
+        var myFooterView = UIView(frame: CGRect(x: 0, y: 0, width: _tableView.bounds.width, height: 4.0));
+        myFooterView.backgroundColor = UIColor.clearColor();
+        return myFooterView;
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        if( servers != nil )
+        {
+            return servers!.arrayOfItems!.count;
+        }
+        else
+        {
+            return 0;
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if( servers != nil )
         {
-            return servers!.arrayOfItems!.count;
+            return 1;
         }
         else
         {
@@ -124,6 +150,9 @@ class CaaSServerController: UIViewController, UITableViewDataSource, UITableView
                 cell!.layer.shadowRadius = 2.0;
                 cell!.layer.shadowOffset = CGSize(width: 0.0, height: 2.0);
                 cell!.layer.shadowOpacity = 0.5;
+                
+                cell!.contentView.frame = cell!.bounds;
+                cell?.contentView.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleWidth;
             }
         }
         
@@ -135,15 +164,35 @@ class CaaSServerController: UIViewController, UITableViewDataSource, UITableView
             let privateIpField = cell?.viewWithTag(101) as UILabel;
             let publicIpField = cell?.viewWithTag(102) as UILabel;
             let specsField = cell?.viewWithTag(103) as UILabel;
+            let mnameField = cell?.viewWithTag(104) as UILabel;
+            let imageView = cell?.viewWithTag(106) as UIImageView;
             
             if( servers != nil )
             {
-                if let server:CaaSServerModel = servers!.arrayOfItems!.objectAtIndex(indexPath.row) as? CaaSServerModel
+                if let server:CaaSServerModel = servers!.arrayOfItems!.objectAtIndex(indexPath.section) as? CaaSServerModel
                 {
                     nameField.attributedText = getAttributedText(server.name);
                     privateIpField.attributedText = getAttributedText(server.privateIp);
                     publicIpField.attributedText = getAttributedText(server.publicIp);
                     specsField.attributedText = getAttributedText("\(server.cpuCount) CPU(s) - \(server.memory) MB");
+                    mnameField.attributedText = getAttributedText(server.machineName);
+                    if( server.isStarted == "true" )
+                    {
+                        imageView.image = UIImage(named: "tick.png")
+                    }
+                    else
+                    {
+                        imageView.image = UIImage(named: "cross.png")
+                    }
+                }
+            }
+            
+            // Update the normal labels too
+            for(var i=200; i < 205; i++)
+            {
+                if let label:UILabel? = cell!.viewWithTag(i) as? UILabel
+                {
+                    label!.attributedText = getAttributedText(label!.text!);
                 }
             }
         }

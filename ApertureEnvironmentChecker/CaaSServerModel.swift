@@ -14,8 +14,8 @@ class CaaSServerModel : NSObject
     var operatingSystem = "";
     var cpuCount = "";
     var memory = "";
-    var machinename = "";
+    var machineName = "";
     var privateIp = "";
     var publicIp = "";
-    var isrunning = "";
+    var isStarted = "";
 }
