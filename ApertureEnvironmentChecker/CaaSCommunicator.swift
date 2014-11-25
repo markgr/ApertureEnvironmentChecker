@@ -105,6 +105,36 @@ class CaaSCommunicator : NSObject, NSXMLParserDelegate
         }
     }
     
+    /******************************************************
+    *
+    * Method: GetAllServerForNetwork
+    * Returns: Nothing
+    * Description: Gets all the servers for an organization in a network
+    *
+    *****************************************************/
+    func GetServerForNetwork(orgId:String, withServer server:String) -> Void
+    {
+        // Setyp the shared client to get the details from the call
+        let sharedClient = SVHTTPClient.sharedClient();
+        sharedClient.basePath = "https://api-au.dimensiondata.com/oec/0.9/";
+        sharedClient.setBasicAuthWithUsername("mark.greenwood", password: "Letme!n1")
+        
+        var accModel = CaaSServerModel()
+        currentClass = object_getClass(accModel);
+        anyObject = accModel;
+        
+        sharedClient.GET(orgId + "/serverWithBackup?Id=" + server, parameters: nil) { (response, httpresponse, error) -> Void in
+            println("we got back a \(httpresponse.statusCode)")
+            println("the response was \(response) and the class = \(_stdlib_getTypeName(response))")
+            if let something:NSData? = response as NSData?
+            {
+                var xmlParser = NSXMLParser(data: something!);
+                xmlParser.delegate = self;
+                xmlParser.parse();
+            }
+        }
+    }
+    
     func stripColonsFromElement(element:String) -> String
     {
         if( NSString(string: element).containsString(":") )
@@ -248,6 +278,10 @@ class CaaSCommunicator : NSObject, NSXMLParserDelegate
             {
                 delegate!.FinishedParsingAllServers?(self.anyObject?)
             }
+            else if ( anyObject is CaaSServerModel )
+            {
+                delegate!.FinishedParsingServer?(self.anyObject?)
+            }
         }
     }
 }
@@ -257,5 +291,6 @@ class CaaSCommunicator : NSObject, NSXMLParserDelegate
     optional func FinishedParsingAccount(completedObject:AnyObject?);
     optional func FinishedParsingAllNetworks(completedObject:AnyObject?);
     optional func FinishedParsingAllServers(completedObject:AnyObject?);
+    optional func FinishedParsingServer(completedObject:AnyObject?);
 }
 

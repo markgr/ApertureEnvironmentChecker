@@ -10,7 +10,7 @@ import Foundation
 
 class Utils
 {
-    class func addGradientBackground(baseview:UIView, layerView:UIView)
+    class func addGradientBackground(baseview:UIView, layerView:UIView?)
     {
         var arrayOfColors = [];
         let colorTop = UIColor.blackColor().CGColor;
@@ -21,6 +21,13 @@ class Utils
         gradientLayer.frame = baseview.frame;
         gradientLayer.colors = arrayOfColors;
         gradientLayer.locations = [0.0,1.0];
-        baseview.layer.insertSublayer(gradientLayer, below:layerView.layer);
+        if( layerView != nil )
+        {
+            baseview.layer.insertSublayer(gradientLayer, below:layerView!.layer);
+        }
+        else
+        {
+            baseview.layer.insertSublayer(gradientLayer, atIndex: 0);
+        }
     }
 }

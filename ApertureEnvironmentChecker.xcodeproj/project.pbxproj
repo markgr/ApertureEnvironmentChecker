@@ -16,6 +16,7 @@
 		EE83E9F31A24253F0076934C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE83E9F21A24253F0076934C /* Utils.swift */; };
 		EE83E9F71A2432DB0076934C /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = EE83E9F51A2432DB0076934C /* cross.png */; };
 		EE83E9F81A2432DB0076934C /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = EE83E9F61A2432DB0076934C /* tick.png */; };
+		EE83E9FE1A2453E90076934C /* CsfmServerList.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE83E9FD1A2453E90076934C /* CsfmServerList.plist */; };
 		EECCA0491A22E3890030B8C4 /* StartupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA0481A22E3890030B8C4 /* StartupController.swift */; };
 		EECCA04E1A22E4380030B8C4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EECCA04B1A22E4380030B8C4 /* SVProgressHUD.bundle */; };
 		EECCA04F1A22E4380030B8C4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCA04D1A22E4380030B8C4 /* SVProgressHUD.m */; };
@@ -60,6 +61,7 @@
 		EE83E9F21A24253F0076934C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		EE83E9F51A2432DB0076934C /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cross.png; path = Images/cross.png; sourceTree = "<group>"; };
 		EE83E9F61A2432DB0076934C /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tick.png; path = Images/tick.png; sourceTree = "<group>"; };
+		EE83E9FD1A2453E90076934C /* CsfmServerList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CsfmServerList.plist; sourceTree = "<group>"; };
 		EECCA0481A22E3890030B8C4 /* StartupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupController.swift; sourceTree = "<group>"; };
 		EECCA04B1A22E4380030B8C4 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		EECCA04C1A22E4380030B8C4 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				EED67B551A1EFFAF004CA3AF /* Images.xcassets */,
 				EED67B571A1EFFAF004CA3AF /* LaunchScreen.xib */,
 				EECCA05C1A23FCFD0030B8C4 /* ServerTableViewCell.xib */,
+				EE83E9FD1A2453E90076934C /* CsfmServerList.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			files = (
 				EE83E9F71A2432DB0076934C /* cross.png in Resources */,
 				EECCA05D1A23FCFD0030B8C4 /* ServerTableViewCell.xib in Resources */,
+				EE83E9FE1A2453E90076934C /* CsfmServerList.plist in Resources */,
 				EED67B541A1EFFAF004CA3AF /* Main.storyboard in Resources */,
 				EED67B591A1EFFAF004CA3AF /* LaunchScreen.xib in Resources */,
 				EE83E9F81A2432DB0076934C /* tick.png in Resources */,

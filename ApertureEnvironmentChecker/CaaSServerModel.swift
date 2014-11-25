@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CaaSServerModel : NSObject
+class CaaSServerModel : BaseModel
 {
     var name = "";
     var operatingSystem = "";

@@ -16,6 +16,11 @@ class CaaSServerController: UIViewController, UITableViewDataSource, UITableView
     let cellIdent:String = "ServerCell";
     var orgId:String? = nil;
     var network:String? = nil;
+    var plistFile:NSArray? = nil;
+    
+    // Used for loading in plist files
+    var _currentPlistEntry:Int = 0;
+    var _totalPlistEntry:Int = 0;
     
     init(orgGuid:String, network net:String)
     {
@@ -31,7 +36,14 @@ class CaaSServerController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad()
     {
-        self.title = "CaaS Servers";
+        if( plistFile == nil )
+        {
+            self.title = "CaaS Servers";
+        }
+        else
+        {
+            self.title = "CSfM Servers";
+        }
         
         _tableView.backgroundColor = UIColor.clearColor();
         
@@ -47,11 +59,29 @@ class CaaSServerController: UIViewController, UITableViewDataSource, UITableView
         
         SVProgressHUD.showWithStatus("Loading Servers");
         
-        let caas = CaaSCommunicator();
-        caas.delegate = self;
-        if (self.orgId != nil && self.network != nil)
+        if( plistFile == nil )
         {
-            caas.GetAllServerForNetwork(self.orgId!, net: self.network!);
+            let caas = CaaSCommunicator();
+            caas.delegate = self;
+            if (self.orgId != nil && self.network != nil)
+            {
+                caas.GetAllServerForNetwork(self.orgId!, net: self.network!);
+            }
+        }
+        else
+        {
+            // Ok we are going to load in based on the array - sooooo
+            _totalPlistEntry = plistFile!.count;
+            _currentPlistEntry = 0;
+            
+            let caas = CaaSCommunicator();
+            caas.delegate = self;
+            if let server:NSDictionary? = plistFile!.objectAtIndex(_currentPlistEntry) as? NSDictionary
+            {
+                let org:String? = server!.objectForKey("Organization") as? String;
+                let server:String? = server!.objectForKey("Server") as? String;
+                caas.GetServerForNetwork(org!, withServer: server!);
+            }
         }
     }
     
@@ -68,6 +98,53 @@ class CaaSServerController: UIViewController, UITableViewDataSource, UITableView
         // Force a reload
         _tableView.reloadData();
         _tableView.contentInset = UIEdgeInsets(top: 35.0, left: 0, bottom: 0, right: 0);
+    }
+    
+    func FinishedParsingServer(completedObject:AnyObject?)
+    {
+        // If this is the first one
+        if( servers == nil )
+        {
+            // Servers
+            servers = CaaSServersModel();
+        }
+        
+        _currentPlistEntry += 1;
+        servers?.AddNewModel();
+        if let completedModel:CaaSServerModel? = completedObject as? CaaSServerModel
+        {
+            if let model:CaaSServerModel? = servers!.GetCurrentModel() as? CaaSServerModel
+            {
+                model!.name = completedModel!.name;
+                model!.operatingSystem = completedModel!.operatingSystem;
+                model!.cpuCount = completedModel!.cpuCount;
+                model!.memory = completedModel!.memory;
+                model!.machineName = completedModel!.machineName;
+                model!.privateIp = completedModel!.privateIp;
+                model!.publicIp = completedModel!.publicIp;
+                model!.isStarted = completedModel!.isStarted;
+            }
+        }
+        
+        if( _currentPlistEntry > _totalPlistEntry-1)
+        {
+            SVProgressHUD.dismiss();
+            
+            // Force a reload
+            _tableView.reloadData();
+            _tableView.contentInset = UIEdgeInsets(top: 35.0, left: 0, bottom: 0, right: 0);
+        }
+        else
+        {
+            let caas = CaaSCommunicator();
+            caas.delegate = self;
+            if let server:NSDictionary? = plistFile!.objectAtIndex(_currentPlistEntry) as? NSDictionary
+            {
+                let org:String? = server!.objectForKey("Organization") as? String;
+                let server:String? = server!.objectForKey("Server") as? String;
+                caas.GetServerForNetwork(org!, withServer: server!);
+            }
+        }
     }
     
     //MARK: Table View stuff
