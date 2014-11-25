@@ -12,7 +12,7 @@ class MainPageLayout: UICollectionViewLayout {
    
     // These are some variables used in the layout
     var itemInserts:UIEdgeInsets = UIEdgeInsets(top: 22.0, left: 22.0, bottom: 13.0, right: 22.0);
-    var itemSize:CGSize = CGSize(width: 125.0, height: 125.0);;
+    var itemSize:CGSize = CGSize(width: 150.0, height: 75.0);;
     var interItemSpacingY:CGFloat = 12.0;
     var numberOfColumns:NSInteger = 2;
     

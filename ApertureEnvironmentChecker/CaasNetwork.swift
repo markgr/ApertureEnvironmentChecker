@@ -14,5 +14,5 @@ class CaasNetworkModel : NSObject
     var name = "";
     var networkdescription = "";
     var location = "";
-    var ipaddress = "";    
+    var ipaddress = "";
 }

@@ -11,6 +11,12 @@ import UIKit
 class StartupController: UIViewController
 {
 
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated);
+        self.navigationController?.navigationBar.hidden = true;
+    }
+    
     //MARK: UI Events
     @IBAction func CaaSAccountDetails(sender: AnyObject)
     {

@@ -17,39 +17,59 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet var _mainPageLayout: MainPageLayout!
     
     var myNetworks:CaaSNetworksModel? = nil;
+    var myAccount:AccountModel? = nil;
     
     override func viewWillAppear(animated: Bool)
     {
-        SVProgressHUD.showWithStatus("Loading");
-        let caas = CaaSCommunicator();
-        caas.GetAccountDetails();
-        caas.delegate = self;
+        self.navigationController?.navigationBar.hidden = false;
     }
     
     override func viewDidAppear(animated: Bool)
     {
+    
+    }
+    
+    func addGradientBackground()
+    {
+        var arrayOfColors = [];
+        let colorTop = UIColor.blackColor();
+        let colorBottom = UIColor.whiteColor();
+        arrayOfColors = [colorTop, colorBottom];
         
+        let gradientLayer = CAGradientLayer();
+        gradientLayer.frame = self.view.frame;
+        gradientLayer.colors = arrayOfColors;
+        gradientLayer.locations = [0.0,1.0];
+        self.view.layer.insertSublayer(gradientLayer, below: _collectionView.layer);
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        _collectionView.backgroundColor = UIColor.blackColor();
+        // _collectionView.backgroundColor = UIColor.whiteColor();
         
         _collectionView.registerClass(MainLayoutCollectionCellCollectionViewCell.self, forCellWithReuseIdentifier: mainCellIdentifier);
+        
+        self.title = "CaaS Networks";
+        
+        _collectionView.backgroundColor = UIColor.clearColor();
+        
+        addGradientBackground();
+        
+        SVProgressHUD.showWithStatus("Loading");
+        let caas = CaaSCommunicator();
+        caas.GetAccountDetails();
+        caas.delegate = self;
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1;
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
     {
         if( myNetworks != nil )
         {
@@ -61,10 +81,43 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return 1;
+    }
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
         let cell:MainLayoutCollectionCellCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(mainCellIdentifier, forIndexPath: indexPath) as MainLayoutCollectionCellCollectionViewCell;
+        
+        if( myNetworks != nil )
+        {
+            if let network:CaasNetworkModel? = myNetworks!.arrayOfItems!.objectAtIndex(indexPath.section) as? CaasNetworkModel
+            {
+                cell.setLabel(network!.name)
+            }
+        }
+        
         return cell;
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    {
+        println("Clicked \(indexPath.section) - \(indexPath.row)");
+        
+        // Create a primary view controller for the main view controller within the storyboard
+        if let network:CaasNetworkModel? = myNetworks!.arrayOfItems!.objectAtIndex(indexPath.section) as? CaasNetworkModel
+        {
+            // First thing to do is to create a new navigation controller!
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil);
+            
+            if let newView = storyBoard.instantiateViewControllerWithIdentifier("CaaSServer") as? CaaSServerController
+            {
+                newView.orgId = myAccount!.orgId;
+                newView.network = network!.id;
+                self.navigationController!.pushViewController(newView, animated: true);
+            }
+        }
     }
     
 //MARK: CaasCommunicatorProtocol functions
@@ -72,6 +125,7 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
     {
         if let myAccount:AccountModel? = completedObject as? AccountModel
         {
+            self.myAccount = myAccount!;
             println("The parsing has finished \(myAccount!)");
             println("The parsing has finished \(myAccount!.fullName)");
             
@@ -88,6 +142,7 @@ class CaaSViewController: UIViewController, UICollectionViewDataSource, UICollec
         if let myNetworks = completedObject as? CaaSNetworksModel
         {
             println("The parsing has finished \(myNetworks.arrayOfItems!.count)");
+            self.myNetworks = myNetworks;
         }
         
         SVProgressHUD.dismiss()

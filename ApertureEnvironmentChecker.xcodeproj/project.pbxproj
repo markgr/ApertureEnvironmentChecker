@@ -18,6 +18,11 @@
 		EECCA04F1A22E4380030B8C4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EECCA04D1A22E4380030B8C4 /* SVProgressHUD.m */; };
 		EECCA0511A22F5C90030B8C4 /* CaasNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA0501A22F5C90030B8C4 /* CaasNetwork.swift */; };
 		EECCA0531A22FD140030B8C4 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA0521A22FD140030B8C4 /* BaseModel.swift */; };
+		EECCA0551A23E0720030B8C4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EECCA0541A23E0720030B8C4 /* CoreText.framework */; };
+		EECCA0571A23E8500030B8C4 /* CaaSServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA0561A23E8500030B8C4 /* CaaSServerModel.swift */; };
+		EECCA0591A23E9360030B8C4 /* CaaSServersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA0581A23E9360030B8C4 /* CaaSServersModel.swift */; };
+		EECCA05B1A23FA430030B8C4 /* CaaSServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA05A1A23FA430030B8C4 /* CaaSServerController.swift */; };
+		EECCA05D1A23FCFD0030B8C4 /* ServerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECCA05C1A23FCFD0030B8C4 /* ServerTableViewCell.xib */; };
 		EED67B4F1A1EFFAF004CA3AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED67B4E1A1EFFAF004CA3AF /* AppDelegate.swift */; };
 		EED67B511A1EFFAF004CA3AF /* CaaSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED67B501A1EFFAF004CA3AF /* CaaSViewController.swift */; };
 		EED67B541A1EFFAF004CA3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EED67B521A1EFFAF004CA3AF /* Main.storyboard */; };
@@ -55,6 +60,11 @@
 		EECCA04D1A22E4380030B8C4 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		EECCA0501A22F5C90030B8C4 /* CaasNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaasNetwork.swift; sourceTree = "<group>"; };
 		EECCA0521A22FD140030B8C4 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		EECCA0541A23E0720030B8C4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		EECCA0561A23E8500030B8C4 /* CaaSServerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaaSServerModel.swift; sourceTree = "<group>"; };
+		EECCA0581A23E9360030B8C4 /* CaaSServersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaaSServersModel.swift; sourceTree = "<group>"; };
+		EECCA05A1A23FA430030B8C4 /* CaaSServerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaaSServerController.swift; sourceTree = "<group>"; };
+		EECCA05C1A23FCFD0030B8C4 /* ServerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServerTableViewCell.xib; sourceTree = "<group>"; };
 		EED67B491A1EFFAF004CA3AF /* ApertureEnvironmentChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApertureEnvironmentChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED67B4D1A1EFFAF004CA3AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EED67B4E1A1EFFAF004CA3AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EECCA0551A23E0720030B8C4 /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,9 +102,11 @@
 			isa = PBXGroup;
 			children = (
 				EE668C511A22B2FA00A5454A /* AccountModel.swift */,
-				EECCA0501A22F5C90030B8C4 /* CaasNetwork.swift */,
 				EECCA0521A22FD140030B8C4 /* BaseModel.swift */,
+				EECCA0501A22F5C90030B8C4 /* CaasNetwork.swift */,
 				EE03BC811A232312002F6C91 /* CaaSNetworksModel.swift */,
+				EECCA0561A23E8500030B8C4 /* CaaSServerModel.swift */,
+				EECCA0581A23E9360030B8C4 /* CaaSServersModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -104,6 +117,7 @@
 				EED67B521A1EFFAF004CA3AF /* Main.storyboard */,
 				EED67B551A1EFFAF004CA3AF /* Images.xcassets */,
 				EED67B571A1EFFAF004CA3AF /* LaunchScreen.xib */,
+				EECCA05C1A23FCFD0030B8C4 /* ServerTableViewCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -194,6 +208,7 @@
 		EED67B4C1A1EFFAF004CA3AF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EECCA0541A23E0720030B8C4 /* CoreText.framework */,
 				EE668C4E1A229E1600A5454A /* ApertureEnvironmentChecker-bridging-header.h */,
 				EED67B4D1A1EFFAF004CA3AF /* Info.plist */,
 			);
@@ -220,6 +235,7 @@
 		EED67B701A1F3E39004CA3AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EED67B6E1A1F040F004CA3AF /* MainPageLayout.swift */,
 				EED67B721A1F3E73004CA3AF /* MainLayoutCollectionCellCollectionViewCell.swift */,
 			);
 			name = Views;
@@ -228,9 +244,9 @@
 		EED67B711A1F3E42004CA3AF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EED67B6E1A1F040F004CA3AF /* MainPageLayout.swift */,
 				EED67B501A1EFFAF004CA3AF /* CaaSViewController.swift */,
 				EECCA0481A22E3890030B8C4 /* StartupController.swift */,
+				EECCA05A1A23FA430030B8C4 /* CaaSServerController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -315,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EECCA05D1A23FCFD0030B8C4 /* ServerTableViewCell.xib in Resources */,
 				EED67B541A1EFFAF004CA3AF /* Main.storyboard in Resources */,
 				EED67B591A1EFFAF004CA3AF /* LaunchScreen.xib in Resources */,
 				EED67B561A1EFFAF004CA3AF /* Images.xcassets in Resources */,
@@ -339,7 +356,9 @@
 				EED67B6F1A1F040F004CA3AF /* MainPageLayout.swift in Sources */,
 				EECCA0491A22E3890030B8C4 /* StartupController.swift in Sources */,
 				EE668C521A22B2FA00A5454A /* AccountModel.swift in Sources */,
+				EECCA05B1A23FA430030B8C4 /* CaaSServerController.swift in Sources */,
 				EECCA0531A22FD140030B8C4 /* BaseModel.swift in Sources */,
+				EECCA0591A23E9360030B8C4 /* CaaSServersModel.swift in Sources */,
 				EE03BC821A232312002F6C91 /* CaaSNetworksModel.swift in Sources */,
 				EE668C4B1A229CD600A5454A /* SVHTTPClient.m in Sources */,
 				EE668C501A22B25500A5454A /* CaaSCommunicator.swift in Sources */,
@@ -347,6 +366,7 @@
 				EE668C4C1A229CD600A5454A /* SVHTTPRequest.m in Sources */,
 				EED67B731A1F3E73004CA3AF /* MainLayoutCollectionCellCollectionViewCell.swift in Sources */,
 				EED67B511A1EFFAF004CA3AF /* CaaSViewController.swift in Sources */,
+				EECCA0571A23E8500030B8C4 /* CaaSServerModel.swift in Sources */,
 				EECCA04F1A22E4380030B8C4 /* SVProgressHUD.m in Sources */,
 				EECCA0511A22F5C90030B8C4 /* CaasNetwork.swift in Sources */,
 				EED67B4F1A1EFFAF004CA3AF /* AppDelegate.swift in Sources */,
